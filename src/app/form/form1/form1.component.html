@@ -1,0 +1,66 @@
+<div class="container mt-5 pl-10 pr-10">
+
+    <form (ngSubmit)="onsubmit()" #f1="ngForm" *ngIf="!isList">
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" [(ngModel)]="userdata.fname" name="first_name"
+                        #first_name="ngModel" placeholder="First Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" [(ngModel)]="userdata.lname" name="last_name"
+                        #last_name="ngModel" placeholder="Last Name">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" [(ngModel)]="userdata.email" name="emaill" #emaill="ngModel">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" [(ngModel)]="userdata.pass" name="password" #password="ngModel"
+                placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" [(ngModel)]="userdata.cpass" name="confirm_password"
+                #confirm_password="ngModel" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+            <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms
+                    of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+        </div>
+        <div class="form-group col-10" style="text-align: center;">
+            <button type="submit" class="col-2 btn btn-success">Submit</button>
+            <button type="button" (click)="cancel()" class="col-1 btn btn-danger">Cancel</button>
+
+        </div>
+    </form>
+
+
+    <div class="container mt-10" *ngIf="isList">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let udatas of userdataresult;let idx=index">
+                <tr>
+                    <th scope="row">{{idx}}</th>
+                    <td>{{udatas.fname}}</td>
+                    <td>{{udatas.lname}}</td>
+                    <td>{{udatas.email}}</td>
+                    <td><a href="javascript:void(0)" (click)="edit(udatas.id)" class="btn btn-link">Edit</a>
+                        <a href="javascript:void(0)" (click)="Delete(udatas.id)" class="btn btn-link ml-5">Delete</a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>

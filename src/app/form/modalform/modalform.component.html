@@ -1,0 +1,15 @@
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+
+<ng-template #template>
+    <ng-container *ngIf="showpopup">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Modal</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="closemodal()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <app-form1></app-form1>
+        </div>
+    </ng-container>
+</ng-template>
